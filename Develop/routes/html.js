@@ -7,7 +7,7 @@ html.get('/', (req, res) => {
 });
 
 html.get('/notes', (req, res) => {
-    res.sentFile(path.json(__dirname, '/public/notes.html'))
+    res.sendFile(path.json(__dirname, '/public/notes.html'))
 }); 
 
 module.exports = html;

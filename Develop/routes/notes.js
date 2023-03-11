@@ -4,9 +4,9 @@ const dataBase = require('../db/db.json');
 const fs = require('fs');
 const util = require('util');
 
-notes.get('/', (req, res) => {
-    readFromFile()
-})
+// notes.get('/', (req, res) => {
+//     readFromFile()
+// })
 
 
 
