@@ -5,47 +5,16 @@ const path = require('path');
 
 
 
-// notes.get('/notes', (req, res) => {
-//     fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (err, data) => {
-//         if (err) console.log(err);
-//         return res.json(JSON.parse(data));
-//     }); 
-// });
-
-// notes.post('/notes', (req, res) => {
-// if(req.body) {
-//     const { title, text } = reg.body;
-//     const newNote = {
-//         title, 
-//         text, 
-//         id: uuidv4(),
-//     };
-//     fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (data) => {
-//        let newData = JSON.parse(data)
-//        newData.push(newNote)
-//        let changedData = JSON.stringify(newData)
-
-//     fs.writeFile(path.resolve(__dirname, '..', 'db/db.json'), changedData, (err) => {
-//         console.log(err);
-//         return res.json();
-//     })
-//     })
-// }
-// });
-
-// notes.delete('/:id', (req, res) => {
-// })
-
-
+// gets note
 notes.get('/notes', (req, res) => {
     fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (err, data) => {
         if (err) console.log(err);
         return res.json(JSON.parse(data));
-});
+    });
 });
 
+// save new notes
 notes.post('/notes', (req, res) => {
-console.log('here');
 if (req.body) {
     const { title, text} = req.body;
     const newNote = {
@@ -53,16 +22,15 @@ if (req.body) {
         text,
         id: uuidv4(),
     };
-    fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (err, data) => {
-        console.log(data)
+    fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (data) => {
         let newData = JSON.parse(data)
         console.log('new data', newData)
-
+        
         newData.push(newNote)
+        
+        let alteredData = JSON.stringify(newData)
 
-        let changedData = JSON.stringify(newData)
-
-        fs.writeFile(path.resolve(__dirname, '..', 'db/db.json'), changedData, (err) => {
+        fs.writeFile(path.resolve(__dirname, '..', 'db/db.json'), alteredData, (err) => {
             console.log(err)
             return res.json();
         })      
@@ -70,6 +38,8 @@ if (req.body) {
 }
 });
 
+// notes.delete('/:id', (req, res) => {
+// })
 
 // exports file
 module.exports = notes;
