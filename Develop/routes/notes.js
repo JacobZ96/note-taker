@@ -16,15 +16,16 @@ notes.get('/notes', (req, res) => {
 // save new notes
 notes.post('/notes', (req, res) => {
 if (req.body) {
-    const { title, text} = req.body;
+    const { title, text } = req.body;
     const newNote = {
         title,
         text,
         id: uuidv4(),
     };
     fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (data) => {
+        console.log(data);
         let newData = JSON.parse(data)
-        console.log('new data', newData)
+        console.log('New Data', newData)
         
         newData.push(newNote)
         
