@@ -10,4 +10,5 @@ html.get('/notes', (req, res) => {
     res.sendFile(path.json(__dirname, '/public/notes.html'))
 }); 
 
+// exports file
 module.exports = html;
