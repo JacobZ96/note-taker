@@ -16,13 +16,15 @@ notes.get('/notes', (req, res) => {
 // save new notes
 notes.post('/notes', (req, res) => {
 if (req.body) {
+    console.log('here');
     const { title, text } = req.body;
     const newNote = {
         title,
         text,
         id: uuidv4(),
     };
-    fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (data) => {
+    fs.readFile(path.resolve(__dirname, '..', 'db/db.json'), 'utf8', (err, data) => {
+        if (err) console.log(err);
         console.log(data);
         let newData = JSON.parse(data)
         console.log('New Data', newData)
@@ -32,7 +34,7 @@ if (req.body) {
         let alteredData = JSON.stringify(newData)
 
         fs.writeFile(path.resolve(__dirname, '..', 'db/db.json'), alteredData, (err) => {
-            console.log(err)
+            console.log('hello')
             return res.json();
         })      
     })
