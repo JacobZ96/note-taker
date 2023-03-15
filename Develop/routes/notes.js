@@ -2,6 +2,7 @@ const notes = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
+const { json } = require('express');
 
 
 
@@ -41,8 +42,17 @@ if (req.body) {
 }
 });
 
-// notes.delete('/:id', (req, res) => {
-// })
+// notes.delete('/note_:id', (req, res) => {
+//     const noteId = req.params.notes_id;
+//     readFile('../db/db.json')
+//     .then((newData) => JSON.parse(newData))
+//     .then((json) => {
+//         console.log(json);
+//         const result = json.filter((notes) => notes.id !== noteId);
+//         fs.writeFile('../db/db.json', result);
+//         res.json(`Item ${noteId} has been deleted 🗑️`);
+//     });
+// });
 
 // exports file
 module.exports = notes;
