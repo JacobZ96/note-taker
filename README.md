@@ -16,3 +16,4 @@ This in intened to be used as a simple note taking app
 Please do not contribute to this project 
 
 ### Live Link
+https://github.com/JacobZ96/note-taker
